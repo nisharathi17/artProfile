@@ -1,0 +1,686 @@
+
+.home-page {
+    position: relative;
+    min-height: 100vh;
+    color: #fff;
+}
+
+.home-bg-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('https://images.unsplash.com/photo-1541701494587-cb58502866ab?q=80&w=2000') no-repeat center center/cover;
+    filter: brightness(0.4) grayscale(20%); 
+    z-index: -1;
+}
+
+header {
+    border-bottom: 1px solid #eeeeee;
+    padding: 2rem 0;
+}
+
+.navbar {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.logo {
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+    color: #fffdfd;
+    
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 2rem;
+    
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #fffdfd;
+    font-size: 2.0;
+    text-transform: uppercase;
+    transition: color 0.3s;
+}
+
+.nav-links a:hover {
+    color: #000;
+}
+
+.about-hero {
+    display: flex;
+    align-items: center;
+    gap: 60px;
+    padding: 100px 0;  
+    flex-wrap: wrap;
+    color: whitesmoke
+
+}
+
+.about-image {
+    flex: 1;
+    min-width: 300px;
+    size: 100px;
+}
+
+.portrait-img {
+    width: 100%;
+    max-width: 450px;
+    border-radius: 2px;
+}
+
+.about-content {
+    flex: 1;
+    min-width: 300px;
+    color: whitesmoke;
+}
+
+.bio-text {
+    font-size: 1.2rem;
+    font-weight: 300;
+    line-height: 1.8;
+    margin-bottom: 20px;
+    color: #e0e0e0;
+}
+
+.btn-outline {
+    display: inline-block;
+    padding: 12px 30px;
+    border: 1px solid #fff;
+    color: #fff;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    letter-spacing: 2px;
+    transition: all 0.3s;
+}
+
+.btn-outline:hover {
+    background: #fff;
+    color: #000;
+}
+
+
+.home-page .nav-links a {
+    color: #fff;
+}
+
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 3rem;
+}
+
+.art-card {
+    text-align: left;
+}
+
+.image-placeholder {
+    width: 100%;
+    height: 400px;
+    background-color: #f5f5f5; 
+    margin-bottom: 1rem;
+    transition: opacity 0.3s;
+}
+
+.image-placeholder:hover {
+    opacity: 0.8;
+}
+
+.art-card h3 {
+    font-size: 1.1rem;
+    margin-bottom: 0.2rem;
+}
+
+.art-card p {
+    color: #888;
+    font-size: 0.9rem;
+}
+
+
+footer {
+    text-align: center;
+    padding: 4rem 0;
+    font-size: 0.8rem;
+    color: #999;
+    border-top: 1px solid #eeeeee;
+}
+/*  Murals Page */
+.mural-img {
+    width: 100%;
+    height: auto;
+    display: block;
+    margin-bottom: 1rem;
+    filter: grayscale(10%);
+    transition: filter 0.5s ease;
+}
+
+.mural-img:hover {
+    filter: grayscale(0%);
+}
+
+.cta-section {
+    margin-top: 6rem;
+    text-align: center;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.cta-section hr {
+    border: 0;
+    border-top: 1px solid #000;
+    width: 50px;
+    margin: 2rem auto;
+}
+
+.cta-section h2 {
+    margin-bottom: 1.5rem;
+}
+
+.btn {
+    display: inline-block;
+    margin-top: 2rem;
+    padding: 1rem 2rem;
+    background: #000;
+    color: #fff;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    letter-spacing: 1px;
+    transition: 0.3s;
+}
+
+.btn:hover {
+    background: #333;
+}
+
+.active {
+    font-weight: bold;
+    color: #000 !important;
+}
+
+.acrylic-featured {
+    display: flex;
+    gap: 40px;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 2rem;
+}
+
+.art-card-featured {
+    flex: 1;
+    min-width: 350px;
+    max-width: 500px;
+    text-align: center;
+    position: relative;
+}
+
+/* The Image Container */
+.image-wrapper {
+    position: relative;
+    overflow: hidden;
+    background-color: #f9f9f9;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+    transition: transform 0.4s ease;
+}
+
+.image-wrapper img {
+    width: 100%;
+    height: 500px;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.6s ease;
+}
+
+
+
+.sale-badge {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: red;
+    color: white;
+    padding: 8px 15px;
+    font-size: 0.7rem;
+    font-weight: bold;
+}
+.art-details {
+    padding: 2rem 0;
+    color:#cccccc;
+}
+
+.price {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin: 10px 0;
+    color: #f1ecec;
+}
+
+.buy-btn {
+    display: inline-block;
+    border: 1px solid #d4af37;
+    padding: 10px 25px;
+    text-decoration: none;
+    color: #d4af37;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    transition: all 0.3s ease;
+    color: #f1ecec;
+}
+
+.buy-btn:hover {
+    background: #000;
+    color: #fff;
+}
+
+.acrylic-page {
+    background-color: #0a062f; 
+}
+
+
+.fancy-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: bold;
+    font-size: 100px;
+    color: #f1ecec;
+    text-align: center;
+}
+
+.title-accent {
+    width: 300px;
+    height: 3px;
+    background-color: #d4af37; 
+    margin: 10px auto;
+    text-align: center;
+}
+
+.dark-gallery {
+    background-color: #040106; 
+    color: #e0e0e0;
+}
+
+.dark-gallery .navbar .logo, 
+.dark-gallery .nav-links a {
+    color: #ffffff;
+}
+
+.dark-gallery .fancy-title {
+    color: #d4af37;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 3.5rem;
+    font-style: italic;
+    text-transform: none;
+}
+
+.subtitle {
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    color: #888;
+    margin-top: 10px;
+}
+
+.portrait-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    margin-top: 4rem;
+}
+
+.portrait-item {
+    display: flex;
+    flex-direction: column;
+}
+
+.image-frame {
+    background-color: #1a1a1a;
+    padding: 20px;
+    border: 1px solid #333;
+    transition: border-color 0.3s;
+}
+
+.image-frame img {
+    width: 100%;
+    height: 600px;
+    object-fit: cover;
+    display: block;
+    filter: sepia(20%) contrast(1.1); 
+}
+
+.image-frame:hover {
+    border-color: #d4af37;
+}
+
+/* Portrait Text Details */
+.portrait-info {
+    padding: 1.5rem 0;
+    text-align: left;
+}
+
+.medium {
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: #d4af37;
+    margin-bottom: 10px;
+}
+
+.description {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.25rem;
+    line-height: 1.6;
+    color: #cccccc;
+    font-style: italic;
+}
+
+
+
+/* Mural Stack Styling */
+.purple-gallery {
+    background-color: #2b0941; 
+    color: #e0e0e0;
+}
+
+.purple-gallery .navbar .logo, 
+.purple-gallery .nav-links a {
+    color: #ffffff;
+}
+
+.purple-gallery .fancy-title {
+    color: #d4af37; 
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 3.5rem;
+    font-style: italic;
+    text-transform: none;
+}
+
+.subtitle {
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    color: #888;
+    margin-top: 10px;
+}
+
+.mural-stack {
+    display: flex;
+    flex-direction: column;
+    gap: 100px;
+    margin-top: 50px;
+}
+
+.mural-entry {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.mural-hero-image {
+    width: 1500px;
+    height: 800px; 
+    overflow: hidden;
+    border: 1px solid #333;
+}
+
+.mural-hero-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.8s ease;
+}
+
+.mural-hero-image:hover img {
+    transform: scale(1.03);
+}
+
+.mural-meta {
+    max-width: 800px;
+}
+
+.location-tag {
+    font-size: 0.7rem;
+    color: #888;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+/* Commission Banner */
+.commission-banner {
+    margin-top: 150px;
+    padding: 80px 40px;
+    background-color: #1a1a1a;
+    border-top: 1px solid #d4af37;
+    text-align: center;
+}
+
+.banner-content h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.5rem;
+    color: #d4af37;
+    margin-bottom: 20px;
+}
+
+.banner-content p {
+    font-size: 1.1rem;
+    max-width: 600px;
+    margin: 0 auto 40px auto;
+    line-height: 1.6;
+}
+
+.cta-gold-btn {
+    padding: 15px 40px;
+    background-color: transparent;
+    color: #d4af37;
+    border: 1px solid #d4af37;
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+}
+
+.cta-gold-btn:hover {
+    background-color: #d4af37;
+    color: #000;
+}
+
+/* Sketchbook Page (sketches.html) */
+.sketchbook-wrap {
+    margin-top: 4rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1.5rem;
+}
+
+.book-stage {
+    position: relative;
+    flex: 1;
+    min-width: 0;
+    height: 580px;
+    perspective: 2400px;
+}
+
+.book-spread {
+    position: absolute;
+    inset: 0;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    background: linear-gradient(135deg, #161616, #0c0c0c);
+    border: 1px solid #333;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+}
+
+.book-spread::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    width: 50px;
+    margin-left: -25px;
+    background: linear-gradient(to right, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.45) 50%, rgba(0, 0, 0, 0) 100%);
+    pointer-events: none;
+    z-index: 2;
+}
+
+.page-left {
+    padding: 3.5rem 3.5rem 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    overflow: hidden;
+    overflow-wrap: break-word;
+    transition: opacity 0.22s ease;
+}
+
+.page-left.is-fading {
+    opacity: 0;
+}
+
+.page-label {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.9rem;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: #666;
+    margin-bottom: 2rem;
+}
+
+.page-left .medium {
+    font-size: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.page-left .description {
+    font-size: 1.65rem;
+    line-height: 1.7;
+}
+
+.page-right,
+.page-flip {
+    padding: 3rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #100f0f;
+}
+
+.page-flip {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 50%;
+    height: 100%;
+    transform-origin: left center;
+    backface-visibility: hidden;
+    will-change: transform;
+    box-shadow: -10px 0 40px rgba(0, 0, 0, 0.5);
+    z-index: 10;
+}
+
+.page-right {
+    position: relative;
+    z-index: 1;
+}
+
+.sketch-image-frame {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #1a1a1a;
+    border: 1px solid #333;
+    padding: 20px;
+}
+
+.sketch-image-frame img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    filter: sepia(15%) contrast(1.08);
+}
+
+.book-nav-btn {
+    flex-shrink: 0;
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background-color: #1a1a1a;
+    border: 2px solid #d4af37;
+    color: #d4af37;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+}
+
+.book-nav-btn:hover:not(:disabled) {
+    background-color: #d4af37;
+    color: #000;
+    transform: scale(1.08);
+}
+
+.book-nav-btn:disabled {
+    opacity: 0.25;
+    cursor: default;
+}
+
+.book-counter-wrap {
+    display: flex;
+    justify-content: center;
+    margin-top: 1.5rem;
+}
+
+.book-counter {
+    font-family: 'Inter', sans-serif;
+    letter-spacing: 2px;
+    font-size: 0.85rem;
+    color: #888;
+    min-width: 80px;
+    text-align: center;
+}
+
+@media (max-width: 900px) {
+    .sketchbook-wrap {
+        flex-direction: column;
+    }
+
+    .book-stage {
+        width: 100%;
+        height: auto;
+    }
+
+    .book-spread {
+        position: relative;
+        grid-template-columns: 1fr;
+    }
+
+    .book-spread::before {
+        display: none;
+    }
+
+    .page-flip {
+        display: none !important;
+    }
+
+    .page-right {
+        height: 420px;
+    }
+
+}
+
+

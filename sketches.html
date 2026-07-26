@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sketches | Nisha Art</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@1,600&family=Inter:wght@300;400&display=swap" rel="stylesheet">
+</head>
+<body class="dark-gallery">
+    <header>
+        <nav class="navbar">
+            <div class="logo">NISHA</div>
+            <ul class="nav-links">
+                <li><a href="home.html">Home</a></li>
+                <li><a href="sketches.html">Sketches</a></li>
+                <li><a href="acrylic.html" >Acrylic</a></li>
+                <li><a href="murals.html">Murals</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main class="container">
+        <section class="hero-section">
+            <h1 class="fancy-title">My Sketchbook of Human Study</h1>
+            <p class="subtitle">"What is a soul, if not colours, light and shadow?"</p>
+        </section>
+
+        <div class="sketchbook-wrap">
+            <button type="button" class="book-nav-btn" id="prevBtn" aria-label="Previous sketch">&#10094;</button>
+
+            <div class="book-stage" id="bookStage">
+                <div class="book-spread">
+                    <div class="page-left" id="pageLeft"></div>
+                    <div class="page-right" id="pageRightBase"></div>
+                </div>
+                <div class="page-flip" id="pageFlip"></div>
+            </div>
+
+            <button type="button" class="book-nav-btn" id="nextBtn" aria-label="Next sketch">&#10095;</button>
+        </div>
+        <div class="book-counter-wrap">
+            <span class="book-counter" id="bookCounter">01 / 08</span>
+        </div>
+
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Nisha Art Studio</p>
+    </footer>
+
+    <script>
+        const sketches = [
+            {
+                img: "sketches/IMG_6156.PNG",
+                alt: "Sketch 1",
+                medium: "Sunburn",
+                description: "She's a burning reflection of a setting sun, her hair catching the last rays of light. She's a character from your typical novel, dark hair and a face that captures the essence of a story yet to be told. Done with the combination of alocohol markers and coloured penicls, the sketch is a study of light and shadow."
+            },
+            {
+                img: "sketches/IMG_6158.PNG",
+                alt: "Sketch 2",
+                medium: "Wildflower",
+                description: "Wildflower. She's blooming even in the dark, violet and magenta bleeding through her hair like a bruise turned beautiful. Freckles scatter across her cheeks like pollen caught in the light, and the flowers framing her face refuse to wilt with her. Built up in layers of alcohol marker and colored pencil, this piece is about softness that survives hard conditions."
+            },
+            {
+                img: "sketches/IMG_6160.PNG",
+                alt: "Sketch 3",
+                medium: "PinkBurst",
+                description: "A pure pink rendition of a girl, because at any point of life, it is her colour, of strenght and everything that feminity can do. Her eyes carry the wariness of someone who has been looked at too often and truly seen too rarely. The freckles and blush were built in translucent layers, letting the white of the page burn through like heat."
+            },
+            {
+                img: "sketches/IMG_6154.PNG",
+                alt: "Sketch 4",
+                medium: "Woodland Spirit",
+                description: "Tucked into a page bordered by moss and wildflowers, she tilts her face toward light that never quite reaches her. Her pointed ears and pale wings marking her as something not quite human, but perhaps longing to be. The greens were washed in, letting the gouache bleed the way undergrowth does after rain. This piece was made with the mixed combination of water colours, and coloured pencils."
+            },
+            {
+                img: "sketches/IMG_6164.PNG",
+                alt: "Sketch 5",
+                medium: "A Raw One",
+                description: "Done purely with charcoal, this is a face caught mid-collapse, somewhere between a breakdown and a scream, and the charcoal was pushed hard into the paper to keep it from resolving into either one. The smudged halo of hair softens an expression that is otherwise raw and unguarded. It's a study in how much a face can hold before it has to let something out."
+            },
+            {
+                img: "sketches/IMG_6162.PNG",
+                alt: "Sketch 6",
+                medium: "A Calm One",
+                description: "Quiet Light. Dappled leaf-shadow falls across her bare shoulders and closed eyes, and for once the drawing isn't about the face at all — it's about the stillness of someone caught in a patch of sun, unaware of being watched. The graphite was kept loose in the shadows and only tightened around the small, private smile, letting the toned paper do the quiet work of midday light."
+            },
+            {
+                img: "sketches/IMG_6161.PNG",
+                alt: "Sketch 7",
+                medium: "Blueburst",
+                description: "My first piece where I realised, i see people in colours. This was when i was determined to respresent figures in singular colour palettes. This one is a study of a girl in blue caught in the state of having the Monday blues"
+            },
+            {
+                img: "sketches/IMG_6155.PNG",
+                alt: "Sketch 8",
+                medium: "Berried",
+                description: "A face behind red-rimmed glasses, that warp the world around her. Her colour pallete matches a bowl of mixed berries, a fragment of which -strawberries and blueberries -glows on the facing page like a memory bleeding through the paper. It's a playful departure from the studio portraits, built fast and loose in saturated color, proof that not every page in the book has to be serious to belong in it."
+            }
+        ];
+
+        const pageLeft = document.getElementById('pageLeft');
+        const pageRightBase = document.getElementById('pageRightBase');
+        const pageFlip = document.getElementById('pageFlip');
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
+        const counter = document.getElementById('bookCounter');
+
+        let current = 0;
+        let animating = false;
+
+        function leftMarkup(index) {
+            const s = sketches[index];
+            const num = String(index + 1).padStart(2, '0');
+            return `
+                <span class="page-label">Sketch &mdash; ${num}</span>
+                <p class="medium">${s.medium}</p>
+                <p class="description">${s.description}</p>
+            `;
+        }
+
+        function rightMarkup(index) {
+            const s = sketches[index];
+            return `
+                <div class="sketch-image-frame">
+                    <img src="${s.img}" alt="${s.alt}">
+                </div>
+            `;
+        }
+
+        function updateControls() {
+            counter.textContent = `${String(current + 1).padStart(2, '0')} / ${String(sketches.length).padStart(2, '0')}`;
+            prevBtn.disabled = current === 0;
+            nextBtn.disabled = current === sketches.length - 1;
+        }
+
+        const FLIP_DURATION = '1.3s';
+        const FLIP_EASE = 'cubic-bezier(0.45, 0, 0.2, 1)';
+
+        function flip(targetIndex, direction) {
+            if (animating || targetIndex < 0 || targetIndex >= sketches.length) return;
+            animating = true;
+
+            const startDeg = direction === 'next' ? '0deg' : '-150deg';
+            const endDeg = direction === 'next' ? '-150deg' : '0deg';
+
+            // Crossfade the description text independently of the flip.
+            pageLeft.classList.add('is-fading');
+            setTimeout(() => {
+                pageLeft.innerHTML = leftMarkup(targetIndex);
+                pageLeft.classList.remove('is-fading');
+            }, 260);
+
+            // Forward: the base already holds the incoming image, and the
+            // flap (holding the outgoing image) rotates away to reveal it.
+            // Backward: the base stays on the outgoing image so nothing
+            // changes until the flap (holding the incoming image) has
+            // physically rotated into view and covers it.
+            if (direction === 'next') {
+                pageRightBase.innerHTML = rightMarkup(targetIndex);
+                pageFlip.innerHTML = rightMarkup(current);
+            } else {
+                pageRightBase.innerHTML = rightMarkup(current);
+                pageFlip.innerHTML = rightMarkup(targetIndex);
+            }
+
+            pageFlip.style.transition = 'none';
+            pageFlip.style.transform = `rotateY(${startDeg})`;
+            pageFlip.style.display = 'flex';
+            void pageFlip.offsetWidth;
+
+            requestAnimationFrame(() => {
+                requestAnimationFrame(() => {
+                    pageFlip.style.transition = `transform ${FLIP_DURATION} ${FLIP_EASE}`;
+                    pageFlip.style.transform = `rotateY(${endDeg})`;
+                });
+            });
+
+            const onEnd = () => {
+                pageFlip.removeEventListener('transitionend', onEnd);
+                pageRightBase.innerHTML = rightMarkup(targetIndex);
+                pageFlip.style.display = 'none';
+                current = targetIndex;
+                updateControls();
+                animating = false;
+            };
+            pageFlip.addEventListener('transitionend', onEnd);
+        }
+
+        prevBtn.addEventListener('click', () => flip(current - 1, 'prev'));
+        nextBtn.addEventListener('click', () => flip(current + 1, 'next'));
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowRight') flip(current + 1, 'next');
+            if (e.key === 'ArrowLeft') flip(current - 1, 'prev');
+        });
+
+        // Preload every sketch image up front so none of them are still
+        // downloading — and popping to full size mid-animation — the first
+        // time a page flip reveals them.
+        sketches.forEach((s) => {
+            const preloadImg = new Image();
+            preloadImg.src = s.img;
+        });
+
+        pageLeft.innerHTML = leftMarkup(current);
+        pageRightBase.innerHTML = rightMarkup(current);
+        pageFlip.style.display = 'none';
+        updateControls();
+    </script>
+
+</body>
+</html>
