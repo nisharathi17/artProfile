@@ -75,13 +75,32 @@ header {
 .about-image {
     flex: 1;
     min-width: 300px;
-    size: 100px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+}
+
+.about-image::before {
+    content: "";
+    position: absolute;
+    inset: -15%;
+    background: radial-gradient(circle, rgba(230, 120, 70, 0.3), rgba(40, 110, 130, 0.22) 55%, transparent 75%);
+    filter: blur(50px);
+    z-index: -1;
 }
 
 .portrait-img {
     width: 100%;
     max-width: 450px;
-    border-radius: 2px;
+    display: block;
+    filter: grayscale(30%) contrast(1.08) brightness(0.9) saturate(0.85);
+    -webkit-mask-image: radial-gradient(ellipse 85% 85% at center, #000 60%, transparent 100%);
+    mask-image: radial-gradient(ellipse 85% 85% at center, #000 60%, transparent 100%);
+    transition: filter 0.8s ease;
+}
+
+.portrait-img:hover {
+    filter: grayscale(5%) contrast(1.05) brightness(1) saturate(1);
 }
 
 .about-content {
@@ -286,6 +305,20 @@ footer {
     padding: 8px 15px;
     font-size: 0.7rem;
     font-weight: bold;
+}
+
+.sold-badge {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: #1a1a1a;
+    color: #d4af37;
+    border: 1px solid #d4af37;
+    padding: 8px 15px;
+    font-size: 0.7rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
 }
 .art-details {
     padding: 2rem 0;
@@ -543,7 +576,7 @@ footer {
 
 .mural-caption {
     position: relative;
-    margin: -45px 0 0 auto;
+    margin: 24px 0 0 auto;
     width: min(320px, 85%);
     background: rgba(20, 4, 32, 0.92);
     border: 1px solid rgba(212, 175, 55, 0.4);
@@ -553,6 +586,7 @@ footer {
 }
 
 .mural-entry.featured .mural-caption {
+    margin-top: -45px;
     width: min(380px, 85%);
 }
 
@@ -573,8 +607,9 @@ footer {
         gap: 55px;
     }
 
-    .mural-caption {
-        margin: -30px 0 0 0;
+    .mural-caption,
+    .mural-entry.featured .mural-caption {
+        margin: 20px 0 0 0;
         width: 100%;
     }
 }
